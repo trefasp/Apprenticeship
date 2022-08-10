@@ -1,25 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
+import {Welcome} from "./components/Welcome";
+import {useState} from "react";
+import {Input} from "@material-ui/core";
+import {Counter} from "./components/Counter";
+import {Orders} from "./views/Orders";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [value, setValue] = useState();
+
+    const handleChangeInput = (event) => {
+        setValue(event.target.value);
+    };
+
+    return (
+        <div className="App">
+            <Welcome name={value}/>
+            <Input onChange={handleChangeInput}/>
+            <Counter/>
+            <Orders/>
+        </div>
+    );
 }
 
 export default App;
